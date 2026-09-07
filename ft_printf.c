@@ -10,27 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
 #include "ft_printf.h"
 
 void	check_after(char c, va_list args)
 {
 	if (c == 'c')
-		ft_putchar_fd(c, 1);
+		ft_putchar_fd(va_arg(args, int), 1);
 	else if (c == 's')
-		print_string();
+		ft_putstr_fd(va_arg(args, (char *)), 1);
 	else if (c == 'p')
-		prinr_pointer();
+		// print_pointer(va_arg(args,(void *)), 1);
 	else if (c == 'd')
-		print_decimal();
+		ft_putnbr_fd(va_arg(args, int), 1);
 	else if (c == 'i')
-		print_decimal();
+		ft_putnbr_fd(va_arg(args, int), 1);
 	else if (c == 'u')
-		print_unsigned_dec();
+		ft_print_unsigned_dec(va_arg(args, unsigned int), 1);
 	else if (c == 'x')
-		print_hex_lower();
+		ft_print_hex_lower(va_arg(args, unsigned int), 1);
 	else if (c == 'X')
-		print_hex_upper();
+		ft_print_hex_upper(va_arg(args, unsigned int), 1);
 	else if (c == '%')
 		write(1, "%", 1);
 }

@@ -20,7 +20,7 @@ void	check_after(char c, va_list args)
 	else if (c == 's')
 		ft_putstr_fd(va_arg(args, (char *)), 1);
 	else if (c == 'p')
-		// print_pointer(va_arg(args,(void *)), 1);
+		ft_print_pointer(va_arg(args,(void *)), 1);
 	else if (c == 'd')
 		ft_putnbr_fd(va_arg(args, int), 1);
 	else if (c == 'i')

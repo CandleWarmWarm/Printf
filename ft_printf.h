@@ -14,5 +14,15 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
+# include <unistd.h>
+
+int	ft_print_hex_lower(unsigned int nbr, int fd);
+int	ft_print_hex_upper(unsigned int nbr, int fd);
+int	ft_print_pointer(void *ptr, int fd);
+int	ft_print_unsigned_dec(unsigned int nbr, int fd);
+int	ft_putchar_fd(char c, int fd);
+int	ft_putnbr_fd(int n, int fd);
+int	ft_putstr_fd(char *s, int fd);
+int	ft_printf(const char *str, ...);
 
 #endif

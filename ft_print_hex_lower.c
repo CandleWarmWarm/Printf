@@ -10,14 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printf.h"
 
-void	ft_print_hex_lower(unsigned int nbr, int fd)
+int	ft_print_hex_lower(unsigned int nbr, int fd)
 {
-	char *base;
+	char	*base;
+	int		count;
 
-	base = "0123456789abcdef"
+	base = "0123456789abcdef";
+	count = 0;
 	if (nbr >= 16)
-		ft_print_hex_lower(nbr / 16, fd)
+		ft_print_hex_lower(nbr / 16, fd);
 	ft_putchar_fd(base[nbr % 16], fd);
+	count++;
+	return (count);
 }

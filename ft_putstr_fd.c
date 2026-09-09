@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/25 17:16:34 by nsomjaip          #+#    #+#             */
-/*   Updated: 2026/09/05 17:06:04 by nsomjaip         ###   ########.fr       */
+/*   Created: 2026/08/29 23:46:15 by nsomjaip          #+#    #+#             */
+/*   Updated: 2026/08/30 00:09:07 by nsomjaip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int	ft_putstr_fd(char *s, int fd)
 {
-	unsigned char		*dest;
-	const unsigned char	*source;
-	size_t				i;
+	int	i;
+	int	count;
 
+	if (s == NULL)
+		return (0);
 	i = 0;
-	dest = dst;
-	source = src;
-	while (i < n)
+	count = 0;
+	while (s[i])
 	{
-		dest[i] = source[i];
+		count += ft_putchar_fd(s[i], fd);
 		i++;
 	}
-	return (dst);
+	return (count);
 }

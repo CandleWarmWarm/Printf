@@ -10,29 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
-void	check_after(char c, va_list args)
+static int	check_after(char c, va_list args)
 {
 	if (c == 'c')
-		ft_putchar_fd(va_arg(args, int), 1);
+		return (ft_putchar_fd(va_arg(args, int), 1));
 	else if (c == 's')
-		ft_putstr_fd(va_arg(args, (char *)), 1);
+		return (ft_putstr_fd(va_arg(args, char *), 1));
 	else if (c == 'p')
-		ft_print_pointer(va_arg(args,(void *)), 1);
+		return (ft_print_pointer(va_arg(args,void *), 1));
 	else if (c == 'd')
-		ft_putnbr_fd(va_arg(args, int), 1);
+		return (ft_putnbr_fd(va_arg(args, int), 1));
 	else if (c == 'i')
-		ft_putnbr_fd(va_arg(args, int), 1);
+		return (ft_putnbr_fd(va_arg(args, int), 1));
 	else if (c == 'u')
-		ft_print_unsigned_dec(va_arg(args, unsigned int), 1);
+		return (ft_print_unsigned_dec(va_arg(args, unsigned int), 1));
 	else if (c == 'x')
-		ft_print_hex_lower(va_arg(args, unsigned int), 1);
+		return (ft_print_hex_lower(va_arg(args, unsigned int), 1));
 	else if (c == 'X')
-		ft_print_hex_upper(va_arg(args, unsigned int), 1);
+		return (ft_print_hex_upper(va_arg(args, unsigned int), 1));
 	else if (c == '%')
+	{
 		write(1, "%", 1);
+		return (1);
+	}
+	return (0);
 }
 
 int	ft_printf(const char *str, ...)
@@ -42,17 +45,19 @@ int	ft_printf(const char *str, ...)
 	int		count;
 
 	len = 0;
+	count = 0;
 	va_start(args, str);
 	while (str[len])
 	{
 		if (str[len] == '%')
 		{
 			len++;
-			check_after(str[len], args);
+			count += check_after(str[len], args);
 		}
 		else
 			ft_putchar_fd(str[len], 1);
 		len++;
+		count++;
 	}
 	va_end(args);
 	return (len);

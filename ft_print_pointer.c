@@ -10,23 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printf.h"
 
-static void	print_hex(unsigned long long adr, int fd)
+static int	print_hex(unsigned long long adr, int fd)
 {
-	char *base;
+	char	*base;
+	int		count;
 
-	base = "0123456789abcdef"
-	if (nbr >= 16)
-		print_hex(nbr / 16, fd);
-	ft_putchar_fd(base[nbr % 16], fd);
+	base = "0123456789abcdef";
+	count = 0;
+	if (adr >= 16)
+		count += print_hex(adr / 16, fd);
+	ft_putchar_fd(base[adr % 16], fd);
+	count++;
+	return (count);
 }
 
-void	ft_pirnt_pointer(void *ptr, int fd)
+int	ft_print_pointer(void *ptr, int fd)
 {
 	unsigned long long	address;
+	int					count;
 
+	count = 0;
 	address = (unsigned long long)ptr;
-	ft_putstr_fd("0x",fd);
-	print_hex(address, fd);
+	count += ft_putstr_fd("0x",fd);
+	count += print_hex(address, fd);
+	return (count);
 }

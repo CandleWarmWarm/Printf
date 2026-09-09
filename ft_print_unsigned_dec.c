@@ -10,11 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printf.h"
 
-void	ft_print_unsigned_dec(unsigned int nbr, int fd)
+int	ft_print_unsigned_dec(unsigned int nbr, int fd)
 {
+	int	count;
+
+	count = 0;
 	if (nbr >= 10)
-		ft_print_unsigned_dec(nbr / 10, fd);
+		count += ft_print_unsigned_dec(nbr / 10, fd);
 	ft_putchar_fd((nbr % 10) + '0', fd);
+	count++;
+	return (count);
 }

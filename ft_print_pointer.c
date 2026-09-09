@@ -32,6 +32,11 @@ int	ft_print_pointer(void *ptr, int fd)
 	int					count;
 
 	count = 0;
+	if (ptr == NULL)
+	{
+		write(fd,"(nil)",5);
+		return (5);
+	}
 	address = (unsigned long long)ptr;
 	count += ft_putstr_fd("0x",fd);
 	count += print_hex(address, fd);

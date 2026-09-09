@@ -20,7 +20,7 @@ int	ft_print_hex_upper(unsigned int nbr, int fd)
 	base = "0123456789ABCDEF";
 	count = 0;
 	if (nbr >= 16)
-		ft_print_hex_upper(nbr / 16, fd);
+		count += ft_print_hex_upper(nbr / 16, fd);
 	ft_putchar_fd(base[nbr % 16], fd);
 	count++;
 	return (count);

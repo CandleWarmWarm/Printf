@@ -55,10 +55,12 @@ int	ft_printf(const char *str, ...)
 			count += check_after(str[len], args);
 		}
 		else
+		{
 			ft_putchar_fd(str[len], 1);
+			count++;
+		}
 		len++;
-		count++;
 	}
 	va_end(args);
-	return (len);
+	return (count);
 }

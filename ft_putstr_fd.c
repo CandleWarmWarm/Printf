@@ -18,7 +18,10 @@ int	ft_putstr_fd(char *s, int fd)
 	int	count;
 
 	if (s == NULL)
-		return (0);
+	{
+		write(fd,"(null)",6);
+		return (6);
+	}
 	i = 0;
 	count = 0;
 	while (s[i])

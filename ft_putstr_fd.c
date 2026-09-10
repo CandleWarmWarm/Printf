@@ -19,7 +19,7 @@ int	ft_putstr_fd(char *s, int fd)
 
 	if (s == NULL)
 	{
-		write(fd,"(null)",6);
+		write(fd, "(null)", 6);
 		return (6);
 	}
 	i = 0;
